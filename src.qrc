@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>svg/wordle-icon.svg</file>
+        <file>svg/icon-mini-stats-check.svg</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/karnak/karnak-small-normal-400.ttf</file>
+        <file>fonts/karnak/karnak-normal-400.ttf</file>
+        <file>fonts/franklin/franklin-small-normal-700.ttf</file>
+        <file>fonts/franklin/franklin-small-normal-500.ttf</file>
+        <file>fonts/franklin/franklin-normal-900.ttf</file>
+        <file>fonts/franklin/franklin-normal-800.ttf</file>
+        <file>fonts/franklin/franklin-normal-700.ttf</file>
+        <file>fonts/franklin/franklin-normal-600.ttf</file>
+        <file>fonts/franklin/franklin-normal-500.ttf</file>
+        <file>fonts/franklin/franklin-normal-300.ttf</file>
+        <file>fonts/franklin/franklin-italic-900.ttf</file>
+        <file>fonts/franklin/franklin-italic-800.ttf</file>
+        <file>fonts/franklin/franklin-italic-700.ttf</file>
+        <file>fonts/franklin/franklin-italic-600.ttf</file>
+        <file>fonts/franklin/franklin-italic-500.ttf</file>
+        <file>fonts/franklin/franklin-italic-300.ttf</file>
+        <file>fonts/franklin/franklin-cword-normal-500.ttf</file>
+    </qresource>
+</RCC>
