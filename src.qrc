@@ -2,6 +2,14 @@
     <qresource prefix="/img">
         <file>svg/wordle-icon.svg</file>
         <file>svg/icon-mini-stats-check.svg</file>
+        <file>svg/round-help-button.svg</file>
+        <file>svg/menu-svgrepo-com.svg</file>
+        <file>svg/menu.svg</file>
+        <file>svg/help-web-button.svg</file>
+        <file>svg/chart-square-svgrepo-com.svg</file>
+        <file>svg/bar-chart.svg</file>
+        <file>svg/settings-svgrepo-com(1).svg</file>
+        <file>svg/settings-svgrepo-com.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/karnak/karnak-small-normal-400.ttf</file>
