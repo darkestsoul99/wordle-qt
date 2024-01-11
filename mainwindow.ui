@@ -33,7 +33,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainMenuWidget">
        <property name="styleSheet">
@@ -425,8 +425,12 @@ position: relative;</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QLabel {
-	qproperty-alignment: AlignCenter;
+	border: 2px solid;
+	border-color: #d3d3d3;
+	font-size: 1.6rem;
 	font-weight: 700;
+	padding-top: 1px;
+	qproperty-alignment: AlignCenter;
 }</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">

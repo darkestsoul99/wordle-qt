@@ -20,6 +20,7 @@ public:
     void connectSignalsSlots();
     void mapKeyboard();
     void mapIndexes();
+    void handleEnteredWord();
     ~MainWindow();
 protected:
     void keyPressEvent(QKeyEvent *event);
@@ -28,10 +29,8 @@ public slots:
     void showSettingsPage();
     void showHowToPlayPage();
     void handleKeyboardButtonClick(const QString &keyboardInput);
-    void handleEnteredWord(const QString &enteredWord);
 signals:
     void keyPressEventSignal(const QString);
-    void checkWordSignal(const QString);
 private:
     Ui::MainWindow *ui;
     Settings *settings;
@@ -40,6 +39,7 @@ private:
     QMap<int, QLabel*> *indexMapper;
     int currentIndex = 1;
     QString currentWord;
+    QString wordOfTheDay = "BRIEF";
 };
 
 #endif // MAINWINDOW_H

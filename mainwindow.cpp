@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -42,26 +43,29 @@ void MainWindow::handleMenuButtons() {
 }
 
 void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
-    // TODO CURRENT LABEL SOLVE PROBLEM
-    if (currentIndex > 30 || currentIndex <= 0) {
-        currentIndex = 1;
-    }
-    QLabel* currentLabel = indexMapper->value(currentIndex);
+    QLabel* currentLabel;
 
     if (QString::compare(keyboardInput.toUpper(), "ENTER") == 0 ||
             QString::compare(keyboardInput, "\r") == 0) {
-        if (currentIndex % 5 == 0) {
-            emit checkWordSignal(currentWord);
-            currentWord = "";
+        if (currentWord.length() % 5 == 0) {
+            handleEnteredWord();
         }
     } else if (QString::compare(keyboardInput.toUpper(), "BACK") == 0 ||
                QString::compare(keyboardInput, "\b") == 0) {
         currentWord.chop(1);
         currentIndex--;
+        if (currentIndex > 30 || currentIndex <= 0) {
+            currentIndex = 1;
+        }
+        currentLabel = indexMapper->value(currentIndex);
         currentLabel->setText("");
     } else {
-        if (currentWord.length() <= 5) {
+        if (currentWord.length() < 5) {
+            if (currentIndex > 30 || currentIndex <= 0) {
+                currentIndex = 1;
+            }
             currentWord.append(keyboardInput);
+            currentLabel = indexMapper->value(currentIndex);
             currentLabel->setText(keyboardInput);
             currentIndex++;
         }
@@ -71,8 +75,19 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
     }
 }
 
-void MainWindow::handleEnteredWord(const QString &enteredWord) {
-    qDebug() << "Entered Word :" << enteredWord;
+void MainWindow::handleEnteredWord() {
+    foreach (QChar character, currentWord) {
+        if (wordOfTheDay.contains(character)) {
+            if (currentWord.indexOf(character) == wordOfTheDay.indexOf(character)) {
+                qDebug() << "Correct index ! ";
+            } else if (currentWord.indexOf(character) != wordOfTheDay.indexOf(character)) {
+                qDebug() << "Character is in different index !";
+            } else {
+                qDebug() << "Character is not in word.";
+            }
+        }
+    }
+    currentWord = "";
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
@@ -89,7 +104,6 @@ void MainWindow::connectSignalsSlots() {
     connect(this->ui->helpButton, SIGNAL(released()), this, SLOT(showHowToPlayPage()));
     connect(keyboardMapper, SIGNAL(mapped(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
     connect(this, SIGNAL(keyPressEventSignal(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
-    connect(this, SIGNAL(checkWordSignal(QString)), this, SLOT(handleEnteredWord(QString)));
 }
 
 void MainWindow::mapKeyboard() {
