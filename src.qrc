@@ -10,6 +10,8 @@
         <file>svg/bar-chart.svg</file>
         <file>svg/settings-svgrepo-com(1).svg</file>
         <file>svg/settings-svgrepo-com.svg</file>
+        <file>svg/close-circle-svgrepo-com.svg</file>
+        <file>svg/close-bold-svgrepo-com.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/karnak/karnak-small-normal-400.ttf</file>
@@ -29,5 +31,8 @@
         <file>fonts/franklin/franklin-italic-500.ttf</file>
         <file>fonts/franklin/franklin-italic-300.ttf</file>
         <file>fonts/franklin/franklin-cword-normal-500.ttf</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file>Switch.qml</file>
     </qresource>
 </RCC>

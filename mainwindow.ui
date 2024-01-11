@@ -33,7 +33,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mainMenuWidget">
        <property name="styleSheet">
@@ -49,41 +49,19 @@
     margin: 0 10px 8px;
     font-weight: 400;
 	background-color: #fff;
+}
+
+QPushButton::hover {
+	border-color: #fff;	
+	background-color: #000;
+	color: #fff;
+}
+
+QPushButton::pressed {
+	background-color: #d3d3d3;
 }</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="2">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="0" column="1">
          <widget class="QWidget" name="mainMenuBoxWidget" native="true">
           <property name="styleSheet">
@@ -185,7 +163,7 @@ font-size: 36px;</string>
            <item>
             <widget class="QWidget" name="mainMenuButtonsWidget" native="true">
              <layout class="QHBoxLayout" name="mainMenuButtonsLayout">
-              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+              <item>
                <widget class="QPushButton" name="howToPlayButton">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -206,31 +184,12 @@ font-size: 36px;</string>
                 <property name="text">
                  <string>How to play</string>
                 </property>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-               <widget class="QPushButton" name="loginButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>200</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">margin: 20px</string>
-                </property>
-                <property name="text">
-                 <string>Log in</string>
+                <property name="checkable">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
-              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+              <item>
                <widget class="QPushButton" name="playButton">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -246,12 +205,13 @@ font-size: 36px;</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">margin: 20px;
-border-color: #fff;
-background-color: #000;
-color: #fff;</string>
+</string>
                 </property>
                 <property name="text">
                  <string>Play</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -274,13 +234,45 @@ color: #fff;</string>
           </layout>
          </widget>
         </item>
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>100</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>100</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="playWidget">
        <property name="styleSheet">
         <string notr="true"/>
        </property>
-       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,5">
+       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,20">
         <item row="0" column="0">
          <widget class="QWidget" name="horizontalWidget" native="true">
           <property name="styleSheet">
@@ -289,23 +281,7 @@ color: #fff;</string>
 	padding: 0;
 }</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,100,1,1,1">
-           <item>
-            <widget class="QPushButton" name="menuButton">
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">image: url(:/img/svg/menu-svgrepo-com.svg);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,1,0">
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="wordleBarLogo">
              <property name="styleSheet">
@@ -322,30 +298,34 @@ position: relative;</string>
            </item>
            <item>
             <widget class="QPushButton" name="helpButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
-               <height>50</height>
+               <width>35</width>
+               <height>35</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">image: url(:/img/svg/round-help-button.svg);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="statsButton">
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">image: url(:/img/svg/bar-chart.svg);</string>
+              <string notr="true">#helpButton {
+	image: url(:/img/svg/round-help-button.svg);
+}
+
+#helpButton::pressed {
+	image: url(:/img/svg/help-web-button.svg);
+}
+
+</string>
              </property>
              <property name="text">
               <string/>
@@ -354,14 +334,26 @@ position: relative;</string>
            </item>
            <item>
             <widget class="QPushButton" name="settingsButton">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
-               <height>50</height>
+               <width>40</width>
+               <height>40</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">image: url(:/img/svg/settings-svgrepo-com(1).svg);</string>
+              <string notr="true">#settingsButton {
+		image: url(:/img/svg/settings-svgrepo-com(1).svg);
+}
+
+#settingsButton::pressed {
+		image: url(:/img/svg/settings-svgrepo-com.svg);
+}</string>
              </property>
              <property name="text">
               <string/>
@@ -411,7 +403,7 @@ position: relative;</string>
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                  <widget class="QWidget" name="wordsWidget" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -419,9 +411,27 @@ position: relative;</string>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0,0">
+                  <property name="minimumSize">
+                   <size>
+                    <width>300</width>
+                    <height>300</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>500</width>
+                    <height>500</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+	qproperty-alignment: AlignCenter;
+	font-weight: 700;
+}</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">
                    <item row="3" column="3">
-                    <widget class="QLabel" name="label_22">
+                    <widget class="QLabel" name="index18">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -432,7 +442,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="1" column="2">
-                    <widget class="QLabel" name="label_30">
+                    <widget class="QLabel" name="index7">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -443,7 +453,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="2" column="1">
-                    <widget class="QLabel" name="label_16">
+                    <widget class="QLabel" name="index11">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -454,7 +464,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="2" column="5">
-                    <widget class="QLabel" name="label_6">
+                    <widget class="QLabel" name="index15">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -465,7 +475,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="0" column="1">
-                    <widget class="QLabel" name="label_13">
+                    <widget class="QLabel" name="index1">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -476,7 +486,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="0" column="4">
-                    <widget class="QLabel" name="label_5">
+                    <widget class="QLabel" name="index4">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -487,7 +497,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="0" column="3">
-                    <widget class="QLabel" name="label_24">
+                    <widget class="QLabel" name="index3">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -498,7 +508,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="1" column="5">
-                    <widget class="QLabel" name="label_8">
+                    <widget class="QLabel" name="index10">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -509,7 +519,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="6" column="4">
-                    <widget class="QLabel" name="label_3">
+                    <widget class="QLabel" name="index29">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -520,7 +530,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="5" column="1">
-                    <widget class="QLabel" name="label_18">
+                    <widget class="QLabel" name="index21">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -531,7 +541,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="3" column="2">
-                    <widget class="QLabel" name="label_28">
+                    <widget class="QLabel" name="index17">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -542,7 +552,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="6" column="5">
-                    <widget class="QLabel" name="label_4">
+                    <widget class="QLabel" name="index30">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -553,7 +563,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="5" column="4">
-                    <widget class="QLabel" name="label_12">
+                    <widget class="QLabel" name="index24">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -564,7 +574,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="0" column="2">
-                    <widget class="QLabel" name="label_23">
+                    <widget class="QLabel" name="index2">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -575,7 +585,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="6" column="3">
-                    <widget class="QLabel" name="label_25">
+                    <widget class="QLabel" name="index28">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -586,7 +596,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="2" column="2">
-                    <widget class="QLabel" name="label_29">
+                    <widget class="QLabel" name="index12">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -597,7 +607,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="0" column="5">
-                    <widget class="QLabel" name="label_2">
+                    <widget class="QLabel" name="index5">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -608,7 +618,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="2" column="3">
-                    <widget class="QLabel" name="label_20">
+                    <widget class="QLabel" name="index13">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -619,7 +629,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="6" column="1">
-                    <widget class="QLabel" name="label_19">
+                    <widget class="QLabel" name="index26">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -630,7 +640,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="1" column="1">
-                    <widget class="QLabel" name="label_15">
+                    <widget class="QLabel" name="index6">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -641,7 +651,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="5" column="5">
-                    <widget class="QLabel" name="label">
+                    <widget class="QLabel" name="index25">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -652,7 +662,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="3" column="1">
-                    <widget class="QLabel" name="label_17">
+                    <widget class="QLabel" name="index16">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -663,7 +673,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="3" column="4">
-                    <widget class="QLabel" name="label_10">
+                    <widget class="QLabel" name="index19">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -674,7 +684,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="2" column="4">
-                    <widget class="QLabel" name="label_9">
+                    <widget class="QLabel" name="index14">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -685,7 +695,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="6" column="2">
-                    <widget class="QLabel" name="label_27">
+                    <widget class="QLabel" name="index27">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -696,7 +706,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="1" column="4">
-                    <widget class="QLabel" name="label_7">
+                    <widget class="QLabel" name="index9">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -707,7 +717,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="5" column="3">
-                    <widget class="QLabel" name="label_26">
+                    <widget class="QLabel" name="index23">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -718,7 +728,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="1" column="3">
-                    <widget class="QLabel" name="label_21">
+                    <widget class="QLabel" name="index8">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -729,7 +739,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="5" column="2">
-                    <widget class="QLabel" name="label_31">
+                    <widget class="QLabel" name="index22">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -740,7 +750,7 @@ border-color: grey;</string>
                     </widget>
                    </item>
                    <item row="3" column="5">
-                    <widget class="QLabel" name="label_11">
+                    <widget class="QLabel" name="index20">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -779,6 +789,18 @@ border-color: grey;</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>1000</width>
+                  <height>1000</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {
     font-size: 1.25em;
@@ -792,6 +814,16 @@ border-color: grey;</string>
 	color: #000;
 	background-color: #d3d3d3;
 	min-height: 60px;
+}
+
+QPushButton::hover {
+	color:#fff;
+	background-color: 	#5A5A5A;
+}
+
+QPushButton::pressed {
+	color:#000;
+	background-color: #fff;
 }
 
 QWidget {
@@ -1100,7 +1132,6 @@ QWidget {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="loginWidget"/>
      </widget>
     </item>
    </layout>

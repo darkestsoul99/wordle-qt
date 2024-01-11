@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += quickwidgets
+QT       += quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,15 +28,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    settings.cpp
+    settings.cpp \
+    howtoplay.cpp
 
 HEADERS += \
         mainwindow.h \
-    settings.h
+    settings.h \
+    howtoplay.h
 
 FORMS += \
         mainwindow.ui \
-    settings.ui
+    settings.ui \
+    howtoplay.ui
 
 RESOURCES += \
     src.qrc
