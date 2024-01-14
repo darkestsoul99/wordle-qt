@@ -17,7 +17,39 @@
    <string notr="true">background: #fff;
 </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="20">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,20">
+   <item alignment="Qt::AlignRight">
+    <widget class="QPushButton" name="exitButton">
+     <property name="minimumSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#exitButton {
+	image: url(:/img/svg/close-circle-svgrepo-com.svg);
+border: none;
+margin: 0;
+padding: 0;
+}
+
+#exitButton::pressed {
+	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="6" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -197,7 +229,7 @@
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
  </customwidgets>
  <resources/>

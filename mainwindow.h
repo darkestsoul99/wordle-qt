@@ -17,13 +17,18 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
     void connectSignalsSlots();
     void mapKeyboard();
     void mapIndexes();
     void handleEnteredWord();
-    ~MainWindow();
+    void allocateObjects();
+    void getWorkFromNetwork();
 protected:
     void keyPressEvent(QKeyEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event);
 public slots:
     void handleMenuButtons();
     void showSettingsPage();
@@ -35,6 +40,8 @@ private:
     Ui::MainWindow *ui;
     Settings *settings;
     HowToPlay *howToPlay;
+    int m_nMouseClick_X_Coordinate;
+    int m_nMouseClick_Y_Coordinate;
     QSignalMapper *keyboardMapper;
     QMap<int, QLabel*> *indexMapper;
     int currentIndex = 1;

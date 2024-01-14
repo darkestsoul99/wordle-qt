@@ -12,6 +12,8 @@
         <file>svg/settings-svgrepo-com.svg</file>
         <file>svg/close-circle-svgrepo-com.svg</file>
         <file>svg/close-bold-svgrepo-com.svg</file>
+        <file>svg/close-circle-black.svg</file>
+        <file>svg/close-circle-svgrepo-com (1).svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/karnak/karnak-small-normal-400.ttf</file>

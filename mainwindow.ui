@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Wordle</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
@@ -23,11 +23,10 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="font">
        <font>
-        <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
        </font>
@@ -62,6 +61,22 @@ QPushButton::pressed {
 }</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>100</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item row="0" column="1">
          <widget class="QWidget" name="mainMenuBoxWidget" native="true">
           <property name="styleSheet">
@@ -250,22 +265,6 @@ font-size: 36px;</string>
           </property>
          </spacer>
         </item>
-        <item row="0" column="2">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="playWidget">
@@ -281,7 +280,7 @@ font-size: 36px;</string>
 	padding: 0;
 }</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,1,0">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,1,0,0">
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="wordleBarLogo">
              <property name="styleSheet">
@@ -354,6 +353,38 @@ position: relative;</string>
 #settingsButton::pressed {
 		image: url(:/img/svg/settings-svgrepo-com.svg);
 }</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="exitButton">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#exitButton {
+	image: url(:/img/svg/close-circle-svgrepo-com.svg);
+border: none;
+margin: 0;
+padding: 0;
+}
+
+#exitButton::pressed {
+	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
+}
+</string>
              </property>
              <property name="text">
               <string/>
@@ -1136,6 +1167,37 @@ QWidget {
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="0" column="0" alignment="Qt::AlignRight">
+     <widget class="QPushButton" name="mainExitButton">
+      <property name="minimumSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#mainExitButton {
+	image: url(:/img/svg/close-circle-svgrepo-com.svg);
+border: none;
+margin: 0;
+padding: 0;
+}
+
+#mainExitButton::pressed {
+	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </item>
    </layout>
