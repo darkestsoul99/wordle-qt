@@ -6,6 +6,9 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QException>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->allocateObjects();
-    this->getWorkFromNetwork();
+    this->getWordFromNetwork();
     this->mapKeyboard();
     this->mapIndexes();
     this->connectSignalsSlots();
@@ -21,10 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    foreach(QObject *object, this->children()) {
-        object->deleteLater();
-    }
-
     delete ui;
 }
 
@@ -32,8 +31,18 @@ void MainWindow::allocateObjects() {
     ui->setupUi(this);
     this->settings = new Settings();
     this->howToPlay = new HowToPlay();
+    this->resultsDialog = new ResultsDialog();
     this->keyboardMapper = new QSignalMapper();
     this->indexMapper = new QMap<int, QLabel*>;
+}
+
+void MainWindow::clearGame() {
+    foreach (QLabel *wordBox, this->indexMapper->values()) {
+        wordBox->setText("");
+    }
+
+    currentIndex = 0;
+    this->getWordFromNetwork();
 }
 
 void MainWindow::showSettingsPage() {
@@ -44,6 +53,10 @@ void MainWindow::showSettingsPage() {
 void MainWindow::showHowToPlayPage() {
     howToPlay->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     howToPlay->show();
+}
+
+void MainWindow::showResultsDialog() {
+    resultsDialog->show();
 }
 
 void MainWindow::handleMenuButtons() {
@@ -118,7 +131,13 @@ void MainWindow::handleEnteredWord() {
 
     qDebug() << "Number of correct characters in the right position: " << correctCount;
     if (correctCount == 5) {
-        //emit signal;
+        emit showResultsDialogSignal();
+        this->resultsDialog->setText("Congratulations ! Your answer was correct.");
+    }
+    qDebug() << currentIndex;
+    if (currentIndex > 30) {
+        emit showResultsDialogSignal();
+        this->resultsDialog->setText("You couldn't find the right answer. Please try again.");
     }
     currentWord = "";
 }
@@ -141,17 +160,13 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event) {
     QMainWindow::mouseMoveEvent(event);
 }
 
-void MainWindow::paintEvent(QPaintEvent * event) {
-    QPainter painter (this);
-
-    QWidget::paintEvent(event);
-}
-
 void MainWindow::connectSignalsSlots() {
     connect(this->ui->playButton, SIGNAL(released()), this, SLOT(handleMenuButtons()));
     connect(this->ui->howToPlayButton, SIGNAL(released()), this, SLOT(handleMenuButtons()));
     connect(this->ui->settingsButton, SIGNAL(released()), this, SLOT(showSettingsPage()));
     connect(this->ui->helpButton, SIGNAL(released()), this, SLOT(showHowToPlayPage()));
+    connect(this, SIGNAL(showResultsDialogSignal()), this, SLOT(showResultsDialog()));
+    connect(resultsDialog, SIGNAL(tryButtonClickedSignal()), this, SLOT(clearGame()));
     connect(this->ui->exitButton, SIGNAL(released()), this, SLOT(close()));
     connect(this->ui->mainExitButton, SIGNAL(released()), this, SLOT(close()));
     connect(keyboardMapper, SIGNAL(mapped(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
@@ -186,44 +201,28 @@ void MainWindow::mapIndexes() {
     }
 }
 
-void MainWindow::getWorkFromNetwork() {
-    // Create a QNetworkAccessManager instance
+void MainWindow::getWordFromNetwork() {
     QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager(this);
-
-    // Create a QNetworkRequest for the desired URL
     QNetworkRequest request(QUrl("https://random-word-api.herokuapp.com/word?length=5"));
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-
-    QSslConfiguration sslConfig = request.sslConfiguration();
-    // Set SSL-related configurations if needed
-    // sslConfig.setCaCertificates(...);
-    // sslConfig.setLocalCertificate(...);
-    // sslConfig.setPrivateKey(...);
-    request.setSslConfiguration(sslConfig);
-    // Perform the GET request
     QNetworkReply *reply = networkAccessManager->get(request);
 
-    // Connect the signal for when the request is finished
     connect(reply, &QNetworkReply::finished, [=]() {
         if (reply->error() == QNetworkReply::NoError) {
-            // Read the response data
             QByteArray responseData = reply->readAll();
-
-            // Convert the response data to a QString (assuming it's JSON)
-            QString responseString = QString::fromUtf8(responseData);
-
-            // Print the response
-            qDebug() << responseString;
-
-            // Process the JSON response as needed
-            // ...
-
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
+            QJsonArray jsonArray = jsonDoc.array();
+            if (!jsonArray.isEmpty() && jsonArray.at(0).isString()) {
+                QString word = jsonArray.at(0).toString();
+                wordOfTheDay = word.toUpper();
+                qDebug() << "Word: " << word;
+            } else {
+                qDebug() << "Invalid JSON array or no string element found.";
+            }
         } else {
-            // Handle the error
             qDebug() << "Error: " << reply->errorString();
         }
 
-        // Clean up
         reply->deleteLater();
         networkAccessManager->deleteLater();
     });

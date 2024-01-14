@@ -8,7 +8,6 @@ QT       += core gui
 QT       += quickwidgets
 QT       += quick
 QT       += network
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = wordle
@@ -29,16 +28,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+    resultsdialog.cpp \
     settings.cpp \
     howtoplay.cpp
 
 HEADERS += \
         mainwindow.h \
+    resultsdialog.h \
     settings.h \
     howtoplay.h
 
 FORMS += \
         mainwindow.ui \
+    resultsdialog.ui \
     settings.ui \
     howtoplay.ui
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResultsDialog</class>
+ <widget class="QDialog" name="ResultsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#ResultsDialog {
+	background-color: #fff;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+    <widget class="QLabel" name="informationLabel">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="tryButton">
+     <property name="minimumSize">
+      <size>
+       <width>200</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    position: relative;
+    height: 3em;
+    border-radius: 1.5em;
+	border-color: #000;
+	border: 1px solid;
+    font-size: 16px;
+	line-height: 28px;
+    padding: 0 2em;
+	margin: 20px;
+    font-weight: 400;
+	background-color: #fff;
+}
+
+QPushButton::hover {
+	border-color: #fff;	
+	background-color: #000;
+	color: #fff;
+}
+
+QPushButton::pressed {
+	background-color: #d3d3d3;
+}</string>
+     </property>
+     <property name="text">
+      <string>Try Again</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

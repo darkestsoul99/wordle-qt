@@ -6,6 +6,7 @@
 #include <QLabel>
 #include "settings.h"
 #include "howtoplay.h"
+#include "resultsdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,23 +24,26 @@ public:
     void mapIndexes();
     void handleEnteredWord();
     void allocateObjects();
-    void getWorkFromNetwork();
+    void getWordFromNetwork();
 protected:
     void keyPressEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
-    void paintEvent(QPaintEvent *event);
 public slots:
     void handleMenuButtons();
     void showSettingsPage();
+    void showResultsDialog();
     void showHowToPlayPage();
     void handleKeyboardButtonClick(const QString &keyboardInput);
+    void clearGame();
 signals:
     void keyPressEventSignal(const QString);
+    void showResultsDialogSignal();
 private:
     Ui::MainWindow *ui;
     Settings *settings;
     HowToPlay *howToPlay;
+    ResultsDialog *resultsDialog;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
     QSignalMapper *keyboardMapper;
