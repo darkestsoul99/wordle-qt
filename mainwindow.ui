@@ -302,8 +302,6 @@ font: 57 11pt &quot;NYTFranklin&quot;;</string>
                <weight>9</weight>
                <italic>false</italic>
                <bold>false</bold>
-               <strikeout>false</strikeout>
-               <stylestrategy>PreferDefault</stylestrategy>
               </font>
              </property>
              <property name="styleSheet">

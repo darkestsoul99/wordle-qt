@@ -39,6 +39,14 @@ void MainWindow::allocateObjects() {
 void MainWindow::clearGame() {
     foreach (QLabel *wordBox, this->indexMapper->values()) {
         wordBox->setText("");
+        wordBox->setStyleSheet("");
+    }
+
+    foreach(QObject *child, this->ui->keyboardWidget->children()) {
+        QPushButton *key =qobject_cast<QPushButton*>(child);
+        if (key) {
+            key->setStyleSheet("");
+        }
     }
 
     currentIndex = 0;
@@ -112,21 +120,28 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
 void MainWindow::handleEnteredWord() {
     int correctCount = 0;
     QSet<QChar> notifiedCharacters;
-
+    int startofIndex = currentIndex - 5;
     for (int i = 0; i < currentWord.length(); ++i) {
         QChar character = currentWord.at(i);
-
+        QPushButton *button = ui->keyboardWidget->findChild<QPushButton *>(QString(character) + "KeyButton", Qt::FindDirectChildrenOnly);
         if (wordOfTheDay.contains(character)) {
             if (currentWord.at(i) == wordOfTheDay.at(i)) {
                 qDebug() << "Correct character at position " << i << "!";
+                indexMapper->value(startofIndex)->setStyleSheet("background: rgb(83, 141, 78);");
+                button->setStyleSheet("background: rgb(83, 141, 78);");
                 correctCount++;
             } else if (!notifiedCharacters.contains(character)) {
                 qDebug() << "Correct character, but at a different position!";
+                indexMapper->value(startofIndex)->setStyleSheet("background: rgb(181, 159, 59);");
+                button->setStyleSheet("background: rgb(181, 159, 59);");
                 notifiedCharacters.insert(character);
             }
         } else {
             qDebug() << "Incorrect character!";
+            indexMapper->value(startofIndex)->setStyleSheet("background: rgb(120, 124, 126);");
+            button->setStyleSheet("background: rgb(120, 124, 126);");
         }
+        startofIndex++;
     }
 
     qDebug() << "Number of correct characters in the right position: " << correctCount;
