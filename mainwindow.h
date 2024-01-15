@@ -25,6 +25,7 @@ public:
     void handleEnteredWord();
     void allocateObjects();
     void getWordFromNetwork();
+    void shakeWidget(QWidget *widget);
 protected:
     void keyPressEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
@@ -36,6 +37,10 @@ public slots:
     void showHowToPlayPage();
     void handleKeyboardButtonClick(const QString &keyboardInput);
     void clearGame();
+    void toggleDarkMode();
+    void toggleHighContrastMode();
+    void darkModeColors(QWidget *widget);
+    void resetColors(QWidget *widget);
 signals:
     void keyPressEventSignal(const QString);
     void showResultsDialogSignal();
@@ -52,6 +57,8 @@ private:
     QString currentWord;
     QString wordOfTheDay = "BRIEF";
     int numberOfDeletedIndexes = 0;
+    bool darkModeEnabled = false;
+    bool highContrastEnabled = false;
 };
 
 #endif // MAINWINDOW_H

@@ -19,6 +19,8 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
+signals:
+    void darkThemeSignal();
 private:
     Ui::Settings *ui;
     int m_nMouseClick_X_Coordinate;

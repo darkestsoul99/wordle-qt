@@ -1,6 +1,9 @@
 #include "settings.h"
 #include "ui_settings.h"
 #include <QPainter>
+#include <QQuickItem>
+#include <QQuickWidget>
+#include <QDebug>
 
 Settings::Settings(QWidget *parent) :
     QWidget(parent),
@@ -17,7 +20,10 @@ Settings::~Settings()
 
 void Settings::connectSignalsSlots() {
     connect(this->ui->exitButton, SIGNAL(released()), this, SLOT(hide()));
+    QQuickItem *rootObject = this->ui->darkThemeWidget->rootObject();
+    connect(rootObject, SIGNAL(darkThemeSignal()), this, SIGNAL(darkThemeSignal())); // Will be added to other switches in future release
 }
+
 
 void Settings::mousePressEvent(QMouseEvent *event) {
     m_nMouseClick_X_Coordinate = event->x();

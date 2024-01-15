@@ -8,7 +8,7 @@
 #include <QNetworkRequest>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QException>
+#include <QPropertyAnimation>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -147,6 +147,7 @@ void MainWindow::handleEnteredWord() {
             indexMapper->value(startofIndex)->setStyleSheet("background: rgb(120, 124, 126);");
             button->setStyleSheet("background: rgb(120, 124, 126);");
         }
+        shakeWidget(indexMapper->value(startofIndex));
         startofIndex++;
     }
 
@@ -192,6 +193,7 @@ void MainWindow::connectSignalsSlots() {
     connect(this->ui->mainExitButton, SIGNAL(released()), this, SLOT(close()));
     connect(keyboardMapper, SIGNAL(mapped(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
     connect(this, SIGNAL(keyPressEventSignal(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
+    connect(this->settings, SIGNAL(darkThemeSignal()), this, SLOT(toggleDarkMode()));
 }
 
 void MainWindow::mapKeyboard() {
@@ -247,4 +249,70 @@ void MainWindow::getWordFromNetwork() {
         reply->deleteLater();
         networkAccessManager->deleteLater();
     });
+}
+
+void MainWindow::shakeWidget(QWidget *widget) {
+    QPropertyAnimation *animation = new QPropertyAnimation(widget, "pos");
+    animation->setDuration(100);  // Adjust the duration as needed
+    animation->setLoopCount(2);    // Number of times to repeat the animation
+
+    // Shake effect - adjust the delta values based on how much you want the widget to shake
+    animation->setKeyValueAt(0, widget->pos());
+    animation->setKeyValueAt(0.1, widget->pos() + QPoint(5, 0));
+    animation->setKeyValueAt(0.2, widget->pos() - QPoint(5, 0));
+    animation->setKeyValueAt(0.3, widget->pos() + QPoint(5, 0));
+    animation->setKeyValueAt(0.4, widget->pos() - QPoint(5, 0));
+    animation->setKeyValueAt(0.5, widget->pos() + QPoint(5, 0));
+    animation->setKeyValueAt(0.6, widget->pos() - QPoint(5, 0));
+    animation->setKeyValueAt(0.7, widget->pos() + QPoint(5, 0));
+    animation->setKeyValueAt(0.8, widget->pos() - QPoint(5, 0));
+    animation->setKeyValueAt(0.9, widget->pos() + QPoint(5, 0));
+    animation->setKeyValueAt(1, widget->pos());
+
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+}
+
+// TODO: To be implemented in future release
+void MainWindow::darkModeColors(QWidget *widget) {
+    for (QObject *child : widget->children()) {
+        if (QWidget *childWidget = qobject_cast<QWidget *>(child)) {
+            //childWidget->setStyleSheet("background-color: #000; color: #fff");
+            // Recursively apply dark mode to child widgets
+            darkModeColors(childWidget);
+        }
+    }
+}
+
+// TODO: To be implemented in future release
+void MainWindow::resetColors(QWidget *widget) {
+    for (QObject *child : widget->children()) {
+        if (QWidget *childWidget = qobject_cast<QWidget *>(child)) {
+
+            // Apply the modified palette to the widget
+            childWidget->setStyleSheet("");
+
+            // Recursively apply dark mode to child widgets
+            resetColors(childWidget);
+        }
+    }
+}
+
+void MainWindow::toggleDarkMode() {
+    if (!darkModeEnabled) {
+        // Apply dark mode colors
+        darkModeColors(this);
+    } else {
+        // Reset to default colors
+        resetColors(this);
+    }
+}
+
+// TODO: To be implemented in future release
+void MainWindow::toggleHighContrastMode() {
+    if (!highContrastEnabled) {
+        // TODO : to be implemented
+        // Set to high contrast mode
+    } else {
+        // Reset high contrast mode
+    }
 }
