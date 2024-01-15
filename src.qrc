@@ -36,5 +36,7 @@
     </qresource>
     <qresource prefix="/qml">
         <file>Switch.qml</file>
+        <file>Wordbox.qml</file>
+        <file>boxWidget.qml</file>
     </qresource>
 </RCC>
