@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QStringMatcher>
+#include <QQuickWidget>
 #include <QPainter>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -9,6 +10,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QException>
+#include <QQuickItem>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -33,12 +35,12 @@ void MainWindow::allocateObjects() {
     this->howToPlay = new HowToPlay();
     this->resultsDialog = new ResultsDialog();
     this->keyboardMapper = new QSignalMapper();
-    this->indexMapper = new QMap<int, QLabel*>;
+    this->indexMapper = new QMap<int, QQuickWidget*>;
 }
 
 void MainWindow::clearGame() {
-    foreach (QLabel *wordBox, this->indexMapper->values()) {
-        wordBox->setText("");
+    foreach (QQuickWidget *wordBox, this->indexMapper->values()) {
+        //wordBox->setText("");
     }
 
     currentIndex = 0;
@@ -77,7 +79,7 @@ void MainWindow::handleMenuButtons() {
 }
 
 void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
-    QLabel* currentLabel;
+    QQuickWidget* currentWidget;
 
     if (QString::compare(keyboardInput.toUpper(), "ENTER") == 0 ||
             QString::compare(keyboardInput, "\r") == 0) {
@@ -91,19 +93,19 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
         if (currentIndex > 30 || currentIndex <= 0) {
             currentIndex = 1;
         }
-        currentLabel = indexMapper->value(currentIndex);
-        currentLabel->setText("");
+        currentWidget = indexMapper->value(currentIndex);
+        emit textChangedSignal("", currentIndex);
     } else {
         if (currentWord.length() < 5) {
             if (currentIndex > 30 || currentIndex <= 0) {
                 currentIndex = 1;
             }
             currentWord.append(keyboardInput);
-            currentLabel = indexMapper->value(currentIndex);
-            currentLabel->setText(keyboardInput);
+            currentWidget = indexMapper->value(currentIndex);
+            emit textChangedSignal(keyboardInput, currentIndex);
             currentIndex++;
             qDebug() << "Button clicked : " << keyboardInput;
-            qDebug() << "current index : " << currentLabel->objectName();
+            qDebug() << "current index : " << currentWidget->objectName();
             qDebug() << "current word : " << currentWord;
         }
     }
@@ -111,6 +113,7 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
 
 void MainWindow::handleEnteredWord() {
     int correctCount = 0;
+    int iterator = currentIndex - 5;
     QSet<QChar> notifiedCharacters;
 
     for (int i = 0; i < currentWord.length(); ++i) {
@@ -119,13 +122,16 @@ void MainWindow::handleEnteredWord() {
         if (wordOfTheDay.contains(character)) {
             if (currentWord.at(i) == wordOfTheDay.at(i)) {
                 qDebug() << "Correct character at position " << i << "!";
+                this->indexMapper->value(iterator)->setProperty("state", "correct");
                 correctCount++;
             } else if (!notifiedCharacters.contains(character)) {
                 qDebug() << "Correct character, but at a different position!";
                 notifiedCharacters.insert(character);
+                this->indexMapper->value(iterator)->setProperty("state", "partiallyCorrect");
             }
         } else {
             qDebug() << "Incorrect character!";
+            this->indexMapper->value(iterator)->setProperty("state", "incorrect");
         }
     }
 
@@ -191,10 +197,15 @@ void MainWindow::mapIndexes() {
     }
 
     foreach(QObject* child, this->ui->wordsWidget->children()) {
-        QLabel *wordBox =qobject_cast<QLabel*>(child);
+        QQuickWidget *wordBox =qobject_cast<QQuickWidget*>(child);
         if (wordBox) {
-            QString labelName = wordBox->objectName();  // Assuming labels have names like "index1", "index2", etc.
-            int index = labelName.mid(5).toInt();  // Extract numerical part and convert to int
+            wordBox->setSource(QUrl("qrc:/qml/Wordbox.qml"));
+            QQuickItem *rootObject = wordBox->rootObject();
+
+            QObject::connect(this, SIGNAL(textChangedSignal(QString, int)),
+                             rootObject, SIGNAL(textChangedSignal(QString, int)));
+            QString widgetName = wordBox->objectName();  // Assuming labels have names like "index1", "index2", etc.
+            int index = widgetName.mid(5).toInt();  // Extract numerical part and convert to int
             indexMapper->insert(index, wordBox);  // Use insert to add the pair to the QMap
             qDebug() << "Index of QLabel" << wordBox << "is : " << index;
         }

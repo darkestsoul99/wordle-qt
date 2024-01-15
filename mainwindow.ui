@@ -33,7 +33,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mainMenuWidget">
        <property name="styleSheet">
@@ -302,8 +302,6 @@ font: 57 11pt &quot;NYTFranklin&quot;;</string>
                <weight>9</weight>
                <italic>false</italic>
                <bold>false</bold>
-               <strikeout>false</strikeout>
-               <stylestrategy>PreferDefault</stylestrategy>
               </font>
              </property>
              <property name="styleSheet">
@@ -445,14 +443,14 @@ padding: 0;
             <widget class="QWidget" name="gameAreaWidget" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,3,2">
+               <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,0,2">
                 <item>
                  <spacer name="horizontalSpacer_8">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Preferred</enum>
+                   <enum>QSizePolicy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -462,7 +460,7 @@ padding: 0;
                   </property>
                  </spacer>
                 </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                <item>
                  <widget class="QWidget" name="wordsWidget" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -483,343 +481,228 @@ padding: 0;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel {
+                   <string notr="true">QQuickWidget {
 	border: 2px solid;
 	border-color: #d3d3d3;
 	font-size: 1.6rem;
 	font-weight: 700;
 	padding-top: 1px;
-	qproperty-alignment: AlignCenter;
-}</string>
+	max-width: 50px;
+	max-height: 50px;
+	min-width: 30px;
+	min-height: 30px;
+}
+
+</string>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">
-                   <item row="3" column="3">
-                    <widget class="QLabel" name="index18">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="2">
-                    <widget class="QLabel" name="index7">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLabel" name="index11">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="5">
-                    <widget class="QLabel" name="index15">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="4">
-                    <widget class="QLabel" name="index4">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="5">
-                    <widget class="QLabel" name="index10">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="4">
-                    <widget class="QLabel" name="index29">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="1">
-                    <widget class="QLabel" name="index21">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="2">
-                    <widget class="QLabel" name="index17">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="5">
-                    <widget class="QLabel" name="index30">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="4">
-                    <widget class="QLabel" name="index24">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="3">
-                    <widget class="QLabel" name="index28">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="2">
-                    <widget class="QLabel" name="index12">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="5">
-                    <widget class="QLabel" name="index5">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="3">
-                    <widget class="QLabel" name="index13">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="1">
-                    <widget class="QLabel" name="index26">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="index6">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="5">
-                    <widget class="QLabel" name="index25">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="QLabel" name="index16">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="4">
-                    <widget class="QLabel" name="index19">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
+                  <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0">
+                   <item row="4" column="4">
+                    <widget class="QQuickWidget" name="index25">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
                     </widget>
                    </item>
                    <item row="2" column="4">
-                    <widget class="QLabel" name="index14">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="2">
-                    <widget class="QLabel" name="index27">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="4">
-                    <widget class="QLabel" name="index9">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="3">
-                    <widget class="QLabel" name="index23">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="3">
-                    <widget class="QLabel" name="index8">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="2">
-                    <widget class="QLabel" name="index22">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="5">
-                    <widget class="QLabel" name="index20">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
+                    <widget class="QQuickWidget" name="index15">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
                     </widget>
                    </item>
                    <item row="0" column="3">
-                    <widget class="QLabel" name="index3">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
+                    <widget class="QQuickWidget" name="index4">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
-                     <property name="text">
-                      <string/>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QQuickWidget" name="index11">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QQuickWidget" name="index10">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QQuickWidget" name="index6">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QQuickWidget" name="index21">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QQuickWidget" name="index1">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QQuickWidget" name="index16">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QQuickWidget" name="index7">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QQuickWidget" name="index9">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QQuickWidget" name="index26">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="4">
+                    <widget class="QQuickWidget" name="index20">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QQuickWidget" name="index5">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="3">
+                    <widget class="QQuickWidget" name="index19">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QQuickWidget" name="index27">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="4">
+                    <widget class="QQuickWidget" name="index30">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QQuickWidget" name="index22">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QQuickWidget" name="index14">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QQuickWidget" name="index17">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="3">
+                    <widget class="QQuickWidget" name="index29">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
                     </widget>
                    </item>
                    <item row="0" column="1">
-                    <widget class="QLabel" name="index1">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
+                    <widget class="QQuickWidget" name="index2">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
-                     <property name="text">
-                      <string/>
+                    </widget>
+                   </item>
+                   <item row="4" column="3">
+                    <widget class="QQuickWidget" name="index24">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QQuickWidget" name="index12">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
                     </widget>
                    </item>
                    <item row="0" column="2">
-                    <widget class="QLabel" name="index2">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
+                    <widget class="QQuickWidget" name="index3">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
-                     <property name="text">
-                      <string/>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QQuickWidget" name="index8">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QQuickWidget" name="index13">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="2">
+                    <widget class="QQuickWidget" name="index18">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="2">
+                    <widget class="QQuickWidget" name="index23">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="2">
+                    <widget class="QQuickWidget" name="index28">
+                     <property name="resizeMode">
+                      <enum>QQuickWidget::SizeRootObjectToView</enum>
                      </property>
                     </widget>
                    </item>
@@ -832,7 +715,7 @@ border-color: grey;</string>
                    <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Preferred</enum>
+                   <enum>QSizePolicy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -1233,6 +1116,13 @@ padding: 0;
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header>QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

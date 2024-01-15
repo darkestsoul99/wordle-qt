@@ -39,6 +39,7 @@ public slots:
 signals:
     void keyPressEventSignal(const QString);
     void showResultsDialogSignal();
+    void textChangedSignal(const QString, const int);
 private:
     Ui::MainWindow *ui;
     Settings *settings;
@@ -47,7 +48,7 @@ private:
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
     QSignalMapper *keyboardMapper;
-    QMap<int, QLabel*> *indexMapper;
+    QMap<int, QQuickWidget*> *indexMapper;
     int currentIndex = 1;
     QString currentWord;
     QString wordOfTheDay = "BRIEF";
