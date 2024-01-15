@@ -65,7 +65,7 @@ QPushButton::pressed {
 }</string>
      </property>
      <property name="text">
-      <string>Try Again</string>
+      <string>New Game</string>
      </property>
     </widget>
    </item>

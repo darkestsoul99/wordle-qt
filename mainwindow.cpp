@@ -91,16 +91,21 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
             QString::compare(keyboardInput, "\r") == 0) {
         if (currentWord.length() % 5 == 0) {
             handleEnteredWord();
+            numberOfDeletedIndexes = 0;
         }
     } else if (QString::compare(keyboardInput.toUpper(), "BACK") == 0 ||
                QString::compare(keyboardInput, "\b") == 0) {
-        currentWord.chop(1);
-        currentIndex--;
+        qDebug() << numberOfDeletedIndexes;
+        if (numberOfDeletedIndexes <= 5 && numberOfDeletedIndexes > 0) {
+            currentWord.chop(1);
+            currentIndex--;
+            numberOfDeletedIndexes--;
+            currentLabel = indexMapper->value(currentIndex);
+            currentLabel->setText("");
+        }
         if (currentIndex > 30 || currentIndex <= 0) {
             currentIndex = 1;
         }
-        currentLabel = indexMapper->value(currentIndex);
-        currentLabel->setText("");
     } else {
         if (currentWord.length() < 5) {
             if (currentIndex > 30 || currentIndex <= 0) {
@@ -109,6 +114,7 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
             currentWord.append(keyboardInput);
             currentLabel = indexMapper->value(currentIndex);
             currentLabel->setText(keyboardInput);
+            numberOfDeletedIndexes++;
             currentIndex++;
             qDebug() << "Button clicked : " << keyboardInput;
             qDebug() << "current index : " << currentLabel->objectName();

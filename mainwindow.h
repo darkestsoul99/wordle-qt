@@ -51,6 +51,7 @@ private:
     int currentIndex = 1;
     QString currentWord;
     QString wordOfTheDay = "BRIEF";
+    int numberOfDeletedIndexes = 0;
 };
 
 #endif // MAINWINDOW_H
