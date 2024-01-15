@@ -132,12 +132,12 @@ void MainWindow::handleEnteredWord() {
     qDebug() << "Number of correct characters in the right position: " << correctCount;
     if (correctCount == 5) {
         emit showResultsDialogSignal();
-        this->resultsDialog->setText("Congratulations ! Your answer was correct.");
+        this->resultsDialog->setText("Congratulations ! \nYour answer was correct.");
     }
     qDebug() << currentIndex;
     if (currentIndex > 30) {
         emit showResultsDialogSignal();
-        this->resultsDialog->setText("You couldn't find the right answer. Please try again.");
+        this->resultsDialog->setText("You couldn't find the right answer. \nPlease try again.");
     }
     currentWord = "";
 }

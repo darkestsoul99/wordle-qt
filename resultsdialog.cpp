@@ -21,4 +21,5 @@ void ResultsDialog::tryButtonClickedSlot() {
 
 void ResultsDialog::setText(QString infoText) {
     this->ui->informationLabel->setText(infoText);
+    this->ui->informationLabel->setAlignment(Qt::AlignCenter);
 }

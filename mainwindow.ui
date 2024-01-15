@@ -27,12 +27,13 @@
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="font">
        <font>
+        <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mainMenuWidget">
        <property name="styleSheet">
@@ -140,7 +141,8 @@ QPushButton::pressed {
              <property name="styleSheet">
               <string notr="true">font-weight: bold;
 margin-bottom: 12px;
-font-size: 36px;</string>
+font-size: 36px;
+font: 50px &quot;KarnakPro-CondensedBlack&quot;;</string>
              </property>
              <property name="text">
               <string>Wordle</string>
@@ -165,7 +167,7 @@ font-size: 36px;</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font-size: 24px;</string>
+              <string notr="true">font: 24pt &quot;KarnakPro-Book&quot;;</string>
              </property>
              <property name="text">
               <string>Get 6 chances to guess a 5-letter word.</string>
@@ -177,6 +179,9 @@ font-size: 36px;</string>
            </item>
            <item>
             <widget class="QWidget" name="mainMenuButtonsWidget" native="true">
+             <property name="styleSheet">
+              <string notr="true">font: 57 12pt &quot;NYTFranklin&quot;;</string>
+             </property>
              <layout class="QHBoxLayout" name="mainMenuButtonsLayout">
               <item>
                <widget class="QPushButton" name="howToPlayButton">
@@ -236,10 +241,11 @@ font-size: 36px;</string>
            <item>
             <widget class="QLabel" name="copyrightLabel">
              <property name="styleSheet">
-              <string notr="true">height: 200%;</string>
+              <string notr="true">height: 200%;
+font: 57 11pt &quot;NYTFranklin&quot;;</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;January 10, 2024&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;No. 934&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Edited by Berke Kocadere&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;January 15, 2024&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;No. 934&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Edited by Berke Kocadere&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -283,15 +289,37 @@ font-size: 36px;</string>
           <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,1,0,0">
            <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="wordleBarLogo">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>NYTKarnak</family>
+               <pointsize>24</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <strikeout>false</strikeout>
+               <stylestrategy>PreferDefault</stylestrategy>
+              </font>
+             </property>
              <property name="styleSheet">
-              <string notr="true">font-weight: 700;
-font-size: 28px;
+              <string notr="true">font: 75 24pt &quot;NYTKarnak&quot;;
 left: 0;
 right: 0;
 position: relative;</string>
              </property>
              <property name="text">
               <string>Wordle</string>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="indent">
+              <number>9</number>
              </property>
             </widget>
            </item>
@@ -509,30 +537,8 @@ border-color: grey;</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="index1">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="0" column="4">
                     <widget class="QLabel" name="index4">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="3">
-                    <widget class="QLabel" name="index3">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -599,17 +605,6 @@ border-color: grey;</string>
                    </item>
                    <item row="5" column="4">
                     <widget class="QLabel" name="index24">
-                     <property name="styleSheet">
-                      <string notr="true">border: 1px solid;
-border-color: grey;</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QLabel" name="index2">
                      <property name="styleSheet">
                       <string notr="true">border: 1px solid;
 border-color: grey;</string>
@@ -795,6 +790,39 @@ border-color: grey;</string>
                      </property>
                     </widget>
                    </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="index3">
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid;
+border-color: grey;</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="index1">
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid;
+border-color: grey;</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLabel" name="index2">
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid;
+border-color: grey;</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -840,6 +868,7 @@ border-color: grey;</string>
                  <string notr="true">QPushButton {
     font-size: 1.25em;
     font-weight: bold;
+	font-style: &quot;NYTFranklinCW&quot;;
     border: 0;
     padding: 0;
     margin: 0 6px 0 0;

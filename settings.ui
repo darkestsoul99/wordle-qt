@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background: #fff;
-</string>
+font: 57 14pt &quot;NYTFranklin&quot;;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,20">
    <item alignment="Qt::AlignRight">
@@ -229,7 +229,7 @@ padding: 0;
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
+   <header>QtQuickWidgets/QQuickWidget</header>
   </customwidget>
  </customwidgets>
  <resources/>
