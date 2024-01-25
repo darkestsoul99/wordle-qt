@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="svg/wordle-icon.svg" alt="Wordle Clone Logo">
+</p>
 # Wordle Clone - Qt Desktop Application
 
 
