@@ -11,6 +11,7 @@ Settings::Settings(QWidget *parent) :
 {
     ui->setupUi(this);
     connectSignalsSlots();
+    setWidgetAttributes();
 }
 
 Settings::~Settings()
@@ -20,8 +21,12 @@ Settings::~Settings()
 
 void Settings::connectSignalsSlots() {
     connect(this->ui->exitButton, SIGNAL(released()), this, SLOT(hide()));
-    QQuickItem *rootObject = this->ui->darkThemeWidget->rootObject();
-    connect(rootObject, SIGNAL(darkThemeSignal()), this, SIGNAL(darkThemeSignal())); // Will be added to other switches in future release
+    connect(this->ui->darkThemeWidget->rootObject(), SIGNAL(darkModeSignal(bool)),
+            this, SIGNAL(darkThemeSignal(bool)));
+    connect(this->ui->highContrastWidget->rootObject(), SIGNAL(highContrastModeSignal(bool)),
+            this, SIGNAL(highContrastModeSignal(bool)));
+    connect(this->ui->onscreenInputOnlyWidget->rootObject(), SIGNAL(keyboardOnlySignal(bool)),
+            this, SIGNAL(keyboardOnlySignal(bool)));
 }
 
 
@@ -44,4 +49,30 @@ void Settings::paintEvent(QPaintEvent * event) {
     rect.setHeight (rect.height ()-1);
     painter.drawRoundedRect (rect, 15, 15);
     QWidget::paintEvent(event);
+}
+
+void Settings::toggleDarkMode(bool isDark) {
+    setProperty("darkMode", isDark);
+    style()->unpolish(this);
+    style()->polish(this);
+    foreach(QLabel *label, findChildren<QLabel *>()) {
+        label->style()->unpolish(label);
+        label->style()->polish(label);
+    }
+
+    foreach(QQuickWidget *quickWidget, findChildren<QQuickWidget *>()) {
+        qDebug() << quickWidget->objectName();
+        quickWidget->rootObject()->setProperty("backgroundColor", isDark ? "#333247" : "#D9DDDC");
+        quickWidget->style()->unpolish(quickWidget);
+        quickWidget->style()->polish(quickWidget);
+    }
+}
+
+void Settings::setWidgetAttributes() {
+    foreach(QQuickWidget *quickWidget, findChildren<QQuickWidget *>()) {
+        quickWidget->rootObject()->setProperty("objectName", quickWidget->objectName());
+        quickWidget->setAttribute(Qt::WA_TranslucentBackground);
+        quickWidget->setAttribute(Qt::WA_AlwaysStackOnTop);
+        quickWidget->setClearColor(Qt::transparent);
+    }
 }

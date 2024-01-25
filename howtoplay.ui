@@ -14,13 +14,58 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#HowToPlay {
-	border: 15px solid black;
-	border-radius: 1.5em;
+   <string notr="true">#HowToPlay[darkMode=false]{
 	background-color: #fff;
 	border-color:  #000;
 }
-</string>
+
+#HowToPlay[darkMode=true] {
+	background-color: #000;
+	border-color:  #fff;
+}
+
+#HowToPlay[darkMode=false] &gt; QLabel {
+	color: #000;
+}
+
+#HowToPlay[darkMode=true] &gt; QLabel {
+	color: #fff;
+}
+
+#HowToPlay[darkMode=false] &gt; QWidget &gt; QLabel{
+	color: #000;
+}
+
+#HowToPlay[darkMode=true] &gt; QWidget &gt; QLabel{
+	color: #fff;
+}
+
+#HowToPlay[darkMode=false] #exitButton {
+margin: 0;
+border: none;
+image: url(:/img/svg/dark-close-button.svg);
+}
+
+#HowToPlay[darkMode=false] #exitButton::pressed {
+margin: 0;
+border: none;
+image: url(:/img/svg/dark-inner-white-close-button.svg);
+}
+
+#HowToPlay[darkMode=true] #exitButton {
+margin: 0;
+border: none;
+image: url(:/img/svg/white-grey-close-button.svg);
+}
+
+#HowToPlay[darkMode=true] #exitButton::pressed {
+margin: 0;
+border: none;
+image: url(:/img/svg/grey-blue-close-button.svg);
+}</string>
+  </property>
+  <property name="darkMode" stdset="0">
+   <bool>false</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item alignment="Qt::AlignRight">
@@ -38,17 +83,7 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">#exitButton {
-margin: 0;
-padding: 0;
-background-color: #fff;
-border: none;
-	image: url(:/img/svg/close-circle-svgrepo-com.svg);
-}
-
-#exitButton::pressed {
-	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
-}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>

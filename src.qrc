@@ -1,19 +1,21 @@
 <RCC>
     <qresource prefix="/img">
+        <file>svg/settings-white-button-full.svg</file>
+        <file>svg/settings-white-button.svg</file>
+        <file>svg/settings-grey-white-button.svg</file>
+        <file>svg/settings-grey-button.svg</file>
+        <file>svg/settings-blue-button.svg</file>
+        <file>svg/help-white-line-button.svg</file>
+        <file>svg/help-white-grey-button.svg</file>
+        <file>svg/help-white-button.svg</file>
+        <file>svg/help-blue-line-button.svg</file>
+        <file>svg/help-blue-button.svg</file>
+        <file>svg/grey-white-close-button.svg</file>
+        <file>svg/grey-blue-close-button.svg</file>
+        <file>svg/dark-inner-white-close-button.svg</file>
+        <file>svg/dark-close-button.svg</file>
+        <file>svg/white-grey-close-button.svg</file>
         <file>svg/wordle-icon.svg</file>
-        <file>svg/icon-mini-stats-check.svg</file>
-        <file>svg/round-help-button.svg</file>
-        <file>svg/menu-svgrepo-com.svg</file>
-        <file>svg/menu.svg</file>
-        <file>svg/help-web-button.svg</file>
-        <file>svg/chart-square-svgrepo-com.svg</file>
-        <file>svg/bar-chart.svg</file>
-        <file>svg/settings-svgrepo-com(1).svg</file>
-        <file>svg/settings-svgrepo-com.svg</file>
-        <file>svg/close-circle-svgrepo-com.svg</file>
-        <file>svg/close-bold-svgrepo-com.svg</file>
-        <file>svg/close-circle-black.svg</file>
-        <file>svg/close-circle-svgrepo-com (1).svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/karnak/karnak-small-normal-400.ttf</file>

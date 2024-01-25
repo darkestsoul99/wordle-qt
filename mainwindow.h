@@ -37,10 +37,10 @@ public slots:
     void showHowToPlayPage();
     void handleKeyboardButtonClick(const QString &keyboardInput);
     void clearGame();
-    void toggleDarkMode();
-    void toggleHighContrastMode();
-    void darkModeColors(QWidget *widget);
-    void resetColors(QWidget *widget);
+    void toggleDarkMode(const bool isDark);
+    void toggleHighContrastMode(const bool isHighContrast);
+    void toggleKeyboardOnlyMode(const bool isKeyboardOnly);
+    void toggleHardMode(const bool isHardMode);
 signals:
     void keyPressEventSignal(const QString);
     void showResultsDialogSignal();
@@ -57,8 +57,6 @@ private:
     QString currentWord;
     QString wordOfTheDay = "BRIEF";
     int numberOfDeletedIndexes = 0;
-    bool darkModeEnabled = false;
-    bool highContrastEnabled = false;
 };
 
 #endif // MAINWINDOW_H

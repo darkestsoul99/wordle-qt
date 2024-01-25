@@ -15,6 +15,7 @@ public:
     explicit ResultsDialog(QWidget *parent = nullptr);
     ~ResultsDialog();
     void setText(QString infoText);
+    void toggleDarkMode(bool isDark);
 public slots:
     void tryButtonClickedSlot();
 private:

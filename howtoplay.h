@@ -15,6 +15,7 @@ public:
     explicit HowToPlay(QWidget *parent = 0);
     ~HowToPlay();
     void connectSignalsSlots();
+    void toggleDarkMode(bool isDark);
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

@@ -14,8 +14,75 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #fff;
-font: 57 14pt &quot;NYTFranklin&quot;;</string>
+   <string notr="true">#Settings[darkMode=false] {
+background: #fff;
+}
+
+#Settings[darkMode=true] {
+background: #000;
+}
+
+#Settings[darkMode=false] QLabel{
+color:  #000;
+font: 57 14pt &quot;NYTFranklin&quot;;
+}
+
+#Settings[darkMode=true] QLabel{
+color:  #fff;
+font: 57 14pt &quot;NYTFranklin&quot;;
+}
+
+#Settings[darkMode=false] #exitButton {
+margin: 0;
+border: none;
+image: url(:/img/svg/dark-close-button.svg);
+}
+
+#Settings[darkMode=false] #exitButton::pressed {
+margin: 0;
+border: none;
+image: url(:/img/svg/dark-inner-white-close-button.svg);
+}
+
+#Settings[darkMode=true] #exitButton {
+margin: 0;
+border: none;
+image: url(:/img/svg/white-grey-close-button.svg);
+}
+
+#Settings[darkMode=true] #exitButton::pressed {
+margin: 0;
+border: none;
+image: url(:/img/svg/grey-blue-close-button.svg);
+}
+
+#Settings[darkMode=false]  #bugLink{
+color: #000;
+}
+
+#Settings[darkMode=true] #bugLink{
+color: #fff;
+}
+
+#Settings[darkMode=false] #feedbackLink{
+color: #000;
+}
+
+#Settings[darkMode=true] #feedbackLink{
+color: #fff;
+}
+
+
+#Settings[darkMode=false] #communityLink {
+color: #000;
+}
+
+#Settings[darkMode=true] #communityLink{
+color: #fff;
+}</string>
+  </property>
+  <property name="darkMode" stdset="0">
+   <bool>false</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,20">
    <item alignment="Qt::AlignRight">
@@ -33,17 +100,7 @@ font: 57 14pt &quot;NYTFranklin&quot;;</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">#exitButton {
-	image: url(:/img/svg/close-circle-svgrepo-com.svg);
-border: none;
-margin: 0;
-padding: 0;
-}
-
-#exitButton::pressed {
-	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
@@ -61,8 +118,11 @@ padding: 0;
      </item>
      <item row="4" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
       <widget class="QLabel" name="feedbackLink">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;berkekocadere@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Email&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/darkestsoul99/wordle-qt/issues/new&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Email&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -137,7 +197,7 @@ padding: 0;
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">margin: 0;</string>
+        <string notr="true"/>
        </property>
        <property name="resizeMode">
         <enum>QQuickWidget::SizeRootObjectToView</enum>
@@ -187,6 +247,9 @@ padding: 0;
          <height>30</height>
         </size>
        </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <property name="resizeMode">
         <enum>QQuickWidget::SizeRootObjectToView</enum>
        </property>
@@ -210,6 +273,9 @@ padding: 0;
          <width>70</width>
          <height>30</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="resizeMode">
         <enum>QQuickWidget::SizeRootObjectToView</enum>

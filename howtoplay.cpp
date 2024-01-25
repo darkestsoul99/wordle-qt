@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QPainter>
+#include <QDebug>
 
 HowToPlay::HowToPlay(QWidget *parent) :
     QWidget(parent),
@@ -40,4 +41,14 @@ void HowToPlay::paintEvent(QPaintEvent * event) {
     rect.setHeight (rect.height ()-1);
     painter.drawRoundedRect (rect, 15, 15);
     QWidget::paintEvent(event);
+}
+
+void HowToPlay::toggleDarkMode(bool isDark) {
+    setProperty("darkMode", isDark);
+    style()->unpolish(this);
+    style()->polish(this);
+    foreach(QWidget *widget, findChildren<QLabel *>()) {
+        widget->style()->unpolish(widget);
+        widget->style()->polish(widget);
+    }
 }

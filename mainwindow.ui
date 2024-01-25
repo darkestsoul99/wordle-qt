@@ -14,16 +14,210 @@
    <string>Wordle</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {
-	background-color: #fff;
-}</string>
+   <string notr="true"/>
   </property>
   <property name="animated">
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">#centralWidget[darkMode=false] {
+	background-color: #fff;
+}
+
+#centralWidget[darkMode=true] {
+	background-color: #000;
+}
+
+#centralWidget[darkMode=false] #playWidget{
+	background-color: #fff;
+}
+
+#centralWidget[darkMode=true] #playWidget {
+	background-color: #000;
+}
+
+#centralWidget[darkMode=false] QWidget {
+	background-color: #fff;
+}
+
+#centralWidget[darkMode=true] QWidget {
+	background-color: #000;
+}
+
+#centralWidget[darkMode=false] #helpButton {
+	image: url(:/img/svg/help-blue-line-button.svg);
+}
+
+#centralWidget[darkMode=false] #helpButton::pressed {
+	image: url(:/img/svg/help-blue-button.svg);
+}
+
+#centralWidget[darkMode=true] #helpButton {
+	image: url(:/img/svg/help-white-line-button.svg);
+}
+
+#centralWidget[darkMode=true] #helpButton::pressed {
+	image: url(:/img/svg/help-blue-line-button.svg);
+}
+
+#centralWidget[darkMode=false] #settingsButton{
+	image: url(:/img/svg/settings-blue-button.svg);
+}
+
+#centralWidget[darkMode=false] #settingsButton::pressed{
+	image: url(:/img/svg/settings-white-button.svg);
+}
+
+#centralWidget[darkMode=true] #settingsButton{
+	image: url(:/img/svg/settings-white-button-full.svg);
+}
+
+#centralWidget[darkMode=true] #settingsButton::pressed{
+	image: url(:/img/svg/settings-white-button.svg);
+}
+
+#centralWidget[darkMode=false] #exitButton{
+	image: url(:/img/svg/dark-close-button.svg);
+}
+
+#centralWidget[darkMode=false] #exitButton::pressed{
+	image: url(:/img/svg/dark-inner-white-close-button.svg);
+}
+
+#centralWidget[darkMode=true] #exitButton{
+	image: url(:/img/svg/white-grey-close-button.svg);
+}
+
+#centralWidget[darkMode=true] #exitButton::pressed{
+	image: url(:/img/svg/grey-blue-close-button.svg);
+}
+
+#centralWidget[darkMode=false] #wordleBarLogo {
+	color: #000;
+}
+
+#centralWidget[darkMode=true] #wordleBarLogo {
+	color: #fff;
+}
+
+#centralWidget[darkMode=false] #keyboardWidget QPushButton {
+    font-size: 1.25em;
+    font-weight: bold;
+	font-style: &quot;NYTFranklinCW&quot;;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    text-transform: uppercase;
+	color: #000;
+	background-color: #d3d3d3;
+	min-height: 60px;
+}
+
+#centralWidget[darkMode=false] #keyboardWidget QPushButton::hover {
+	color:#fff;
+	background-color: 	#5A5A5A;
+}
+
+#centralWidget[darkMode=false] #keyboardWidget QPushButton::pressed {
+	color:#000;
+	background-color: #fff;
+}
+
+#centralWidget[darkMode=false] #keyboardWidget QWidget {
+	margin: 0;
+	padding: 0;
+}
+
+#centralWidget[darkMode=true] #keyboardWidget QPushButton {
+    font-size: 1.25em;
+    font-weight: bold;
+	font-style: &quot;NYTFranklinCW&quot;;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    text-transform: uppercase;
+	color: #fff;
+	background-color: rgb(46, 52, 54);
+	min-height: 60px;
+}
+
+#centralWidget[darkMode=true] #keyboardWidget QPushButton::hover {
+	color:#000;
+	background-color: 	#5A5A5A;
+}
+
+#centralWidget[darkMode=true] #keyboardWidget QPushButton::pressed {
+	color:#fff;
+	background-color: #000;
+}
+
+#centralWidget[darkMode=true] #keyboardWidget QWidget {
+	margin: 0;
+	padding: 0;
+}
+
+#centralWidget[darkMode=false] #wordleLabel {
+font-weight: bold;
+margin-bottom: 12px;
+font-size: 36px;
+font: 50px &quot;KarnakPro-CondensedBlack&quot;;
+	color: #000;
+}
+
+#centralWidget[darkMode=true] #wordleLabel {
+font-weight: bold;
+margin-bottom: 12px;
+font-size: 36px;
+font: 50px &quot;KarnakPro-CondensedBlack&quot;;
+	color: #fff;
+}
+
+#centralWidget[darkMode=false] #descriptionLabel{
+	color: #000;
+}
+
+#centralWidget[darkMode=true] #descriptionLabel {
+	color: #fff;
+}
+
+#centralWidget[darkMode=false] #copyrightLabel{
+	color: #000;
+}
+
+#centralWidget[darkMode=true] #copyrightLabel {
+	color: #fff;
+}
+
+#centralWidget[darkMode=false] #wordsWidget QLabel{
+	color: #000;
+	border: 2px solid; 
+	border-color: #d3d3d3; 
+	font-size: 1.6rem; 
+	font-weight: 700; 
+	padding-top: 1px; 
+	qproperty-alignment: AlignCenter; 
+}
+
+#centralWidget[darkMode=true] #wordsWidget QLabel{
+	color: #fff;
+	border: 2px solid; 
+	border-color: #d3d3d3; 
+	font-size: 1.6rem; 
+	font-weight: 700; 
+	padding-top: 1px; 
+	qproperty-alignment: AlignCenter; 
+}</string>
+   </property>
+   <property name="darkMode" stdset="0">
+    <bool>false</bool>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="font">
        <font>
@@ -38,27 +232,27 @@
       <widget class="QWidget" name="mainMenuWidget">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    position: relative;
-    height: 3em;
-    border-radius: 1.5em;
-	border-color: #000;
-	border: 1px solid;
-    font-size: 16px;
-	line-height: 28px;
-    padding: 0 2em;
-    margin: 0 10px 8px;
-    font-weight: 400;
-	background-color: #fff;
+    position: relative; 
+    height: 3em; 
+    border-radius: 1.5em; 
+	border-color: #000; 
+	border: 1px solid; 
+    font-size: 16px; 
+	line-height: 28px; 
+    padding: 0 2em; 
+    margin: 0 10px 8px; 
+    font-weight: 400; 
+	background-color: #fff; 
 }
 
 QPushButton::hover {
 	border-color: #fff;	
-	background-color: #000;
-	color: #fff;
+	background-color: #000; 
+	color: #fff; 
 }
 
 QPushButton::pressed {
-	background-color: #d3d3d3;
+	background-color: #d3d3d3; 
 }</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -139,10 +333,7 @@ QPushButton::pressed {
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font-weight: bold;
-margin-bottom: 12px;
-font-size: 36px;
-font: 50px &quot;KarnakPro-CondensedBlack&quot;;</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>Wordle</string>
@@ -282,8 +473,8 @@ font: 57 11pt &quot;NYTFranklin&quot;;</string>
          <widget class="QWidget" name="horizontalWidget" native="true">
           <property name="styleSheet">
            <string notr="true">QPushButton {
-	border: none;
-	padding: 0;
+	border: none; 
+	padding: 0; 
 }</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout" stretch="100,1,0,0">
@@ -305,10 +496,20 @@ font: 57 11pt &quot;NYTFranklin&quot;;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 75 24pt &quot;NYTKarnak&quot;;
+              <string notr="true">#wordleBarLogo[darkMode=false] {
+font: 75 24pt &quot;NYTKarnak&quot;;
 left: 0;
 right: 0;
-position: relative;</string>
+position: relative;
+}
+
+#wordleBarLogo[darkMode=true] {
+font: 75 24pt &quot;NYTKarnak&quot;;
+left: 0;
+right: 0;
+position: relative;
+color: #fff;
+} </string>
              </property>
              <property name="text">
               <string>Wordle</string>
@@ -318,6 +519,9 @@ position: relative;</string>
              </property>
              <property name="indent">
               <number>9</number>
+             </property>
+             <property name="darkMode" stdset="0">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -331,26 +535,18 @@ position: relative;</string>
              </property>
              <property name="minimumSize">
               <size>
-               <width>35</width>
-               <height>35</height>
+               <width>40</width>
+               <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>35</width>
-               <height>35</height>
+               <width>40</width>
+               <height>40</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">#helpButton {
-	image: url(:/img/svg/round-help-button.svg);
-}
-
-#helpButton::pressed {
-	image: url(:/img/svg/help-web-button.svg);
-}
-
-</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -372,16 +568,13 @@ position: relative;</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">#settingsButton {
-		image: url(:/img/svg/settings-svgrepo-com(1).svg);
-}
-
-#settingsButton::pressed {
-		image: url(:/img/svg/settings-svgrepo-com.svg);
-}</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="darkMode" stdset="0">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -400,17 +593,7 @@ position: relative;</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">#exitButton {
-	image: url(:/img/svg/close-circle-svgrepo-com.svg);
-border: none;
-margin: 0;
-padding: 0;
-}
-
-#exitButton::pressed {
-	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
-}
-</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -481,14 +664,10 @@ padding: 0;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel {
-	border: 2px solid;
-	border-color: #d3d3d3;
-	font-size: 1.6rem;
-	font-weight: 700;
-	padding-top: 1px;
-	qproperty-alignment: AlignCenter;
-}</string>
+                   <string notr="true"/>
+                  </property>
+                  <property name="highContrastMode" stdset="0">
+                   <bool>false</bool>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">
                    <item row="3" column="3">
@@ -499,6 +678,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -511,6 +696,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="2" column="1">
@@ -521,6 +712,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -533,6 +730,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="0" column="4">
@@ -543,6 +746,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -555,6 +764,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="6" column="4">
@@ -565,6 +780,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -577,6 +798,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="3" column="2">
@@ -587,6 +814,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -599,6 +832,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="5" column="4">
@@ -609,6 +848,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -621,6 +866,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="2" column="2">
@@ -631,6 +882,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -643,6 +900,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="2" column="3">
@@ -653,6 +916,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -665,6 +934,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="1" column="1">
@@ -675,6 +950,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -687,6 +968,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="3" column="1">
@@ -697,6 +984,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -709,6 +1002,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="2" column="4">
@@ -719,6 +1018,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -731,6 +1036,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="1" column="4">
@@ -741,6 +1052,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -753,6 +1070,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="1" column="3">
@@ -763,6 +1086,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -775,6 +1104,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="3" column="5">
@@ -785,6 +1120,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -797,6 +1138,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="0" column="1">
@@ -808,6 +1155,12 @@ border-color: grey;</string>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item row="0" column="2">
@@ -818,6 +1171,12 @@ border-color: grey;</string>
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -863,35 +1222,7 @@ border-color: grey;</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">QPushButton {
-    font-size: 1.25em;
-    font-weight: bold;
-	font-style: &quot;NYTFranklinCW&quot;;
-    border: 0;
-    padding: 0;
-    margin: 0 6px 0 0;
-    height: 58px;
-    border-radius: 4px;
-    text-transform: uppercase;
-	color: #000;
-	background-color: #d3d3d3;
-	min-height: 60px;
-}
-
-QPushButton::hover {
-	color:#fff;
-	background-color: 	#5A5A5A;
-}
-
-QPushButton::pressed {
-	color:#000;
-	background-color: #fff;
-}
-
-QWidget {
-	margin: 0;
-	padding: 0;
-}</string>
+                 <string notr="true"/>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <property name="spacing">
@@ -919,12 +1250,24 @@ QWidget {
                      <property name="text">
                       <string>Q</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="WKeyButton">
                      <property name="text">
                       <string>W</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -933,12 +1276,24 @@ QWidget {
                      <property name="text">
                       <string>E</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="RKeyButton">
                      <property name="text">
                       <string>R</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -947,12 +1302,24 @@ QWidget {
                      <property name="text">
                       <string>T</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="YKeyButton">
                      <property name="text">
                       <string>Y</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -961,12 +1328,24 @@ QWidget {
                      <property name="text">
                       <string>U</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="IKeyButton">
                      <property name="text">
                       <string>I</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -975,12 +1354,24 @@ QWidget {
                      <property name="text">
                       <string>O</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="PKeyButton">
                      <property name="text">
                       <string>P</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1015,12 +1406,24 @@ QWidget {
                      <property name="text">
                       <string>A</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="SKeyButton">
                      <property name="text">
                       <string>S</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1029,12 +1432,24 @@ QWidget {
                      <property name="text">
                       <string>D</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="FKeyButton">
                      <property name="text">
                       <string>F</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1043,12 +1458,24 @@ QWidget {
                      <property name="text">
                       <string>G</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="HKeyButton">
                      <property name="text">
                       <string>H</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1057,12 +1484,24 @@ QWidget {
                      <property name="text">
                       <string>J</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="KKeyButton">
                      <property name="text">
                       <string>K</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1076,6 +1515,12 @@ QWidget {
                      </property>
                      <property name="text">
                       <string>L</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1114,12 +1559,24 @@ QWidget {
                      <property name="text">
                       <string>Z</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="XKeyButton">
                      <property name="text">
                       <string>X</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1128,12 +1585,24 @@ QWidget {
                      <property name="text">
                       <string>C</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="VKeyButton">
                      <property name="text">
                       <string>V</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1142,6 +1611,12 @@ QWidget {
                      <property name="text">
                       <string>B</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1149,12 +1624,24 @@ QWidget {
                      <property name="text">
                       <string>N</string>
                      </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="MKeyButton">
                      <property name="text">
                       <string>M</string>
+                     </property>
+                     <property name="green" stdset="0">
+                      <bool>false</bool>
+                     </property>
+                     <property name="yellow" stdset="0">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -1194,37 +1681,6 @@ QWidget {
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="0" column="0" alignment="Qt::AlignRight">
-     <widget class="QPushButton" name="mainExitButton">
-      <property name="minimumSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#mainExitButton {
-	image: url(:/img/svg/close-circle-svgrepo-com.svg);
-border: none;
-margin: 0;
-padding: 0;
-}
-
-#mainExitButton::pressed {
-	image: url(:/img/svg/close-circle-svgrepo-com (1).svg);
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
      </widget>
     </item>
    </layout>

@@ -14,17 +14,21 @@ class Settings : public QWidget
 public:
     explicit Settings(QWidget *parent = 0);
     ~Settings();
-    void connectSignalsSlots();
+    void toggleDarkMode(bool isDark);
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
 signals:
-    void darkThemeSignal();
+    void darkThemeSignal(bool);
+    void highContrastModeSignal(bool);
+    void keyboardOnlySignal(bool);
 private:
     Ui::Settings *ui;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
+    void setWidgetAttributes();
+    void connectSignalsSlots();
 };
 
 #endif // SETTINGS_H

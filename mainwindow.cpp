@@ -40,6 +40,8 @@ void MainWindow::clearGame() {
     foreach (QLabel *wordBox, this->indexMapper->values()) {
         wordBox->setText("");
         wordBox->setStyleSheet("");
+        wordBox->setProperty("green", false);
+        wordBox->setProperty("yellow", false);
     }
 
     foreach(QObject *child, this->ui->keyboardWidget->children()) {
@@ -54,12 +56,12 @@ void MainWindow::clearGame() {
 }
 
 void MainWindow::showSettingsPage() {
-    settings->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    settings->setWindowFlags(Qt::FramelessWindowHint);
     settings->show();
 }
 
 void MainWindow::showHowToPlayPage() {
-    howToPlay->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    howToPlay->setWindowFlags(Qt::FramelessWindowHint);
     howToPlay->show();
 }
 
@@ -73,10 +75,8 @@ void MainWindow::handleMenuButtons() {
         QPushButton* clickedButton = qobject_cast<QPushButton*>(senderObj);
         if(clickedButton) {
             if(clickedButton == ui->playButton) {
-                ui->mainExitButton->hide();
                 ui->stackedWidget->setCurrentWidget(ui->playWidget);
             } else if (clickedButton == ui->howToPlayButton) {
-                ui->mainExitButton->hide();
                 ui->stackedWidget->setCurrentWidget(ui->playWidget);
                 showHowToPlayPage();
             }
@@ -95,7 +95,6 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
         }
     } else if (QString::compare(keyboardInput.toUpper(), "BACK") == 0 ||
                QString::compare(keyboardInput, "\b") == 0) {
-        qDebug() << numberOfDeletedIndexes;
         if (numberOfDeletedIndexes <= 5 && numberOfDeletedIndexes > 0) {
             currentWord.chop(1);
             currentIndex--;
@@ -116,9 +115,6 @@ void MainWindow::handleKeyboardButtonClick(const QString &keyboardInput) {
             currentLabel->setText(keyboardInput);
             numberOfDeletedIndexes++;
             currentIndex++;
-            qDebug() << "Button clicked : " << keyboardInput;
-            qDebug() << "current index : " << currentLabel->objectName();
-            qDebug() << "current word : " << currentWord;
         }
     }
 }
@@ -132,18 +128,19 @@ void MainWindow::handleEnteredWord() {
         QPushButton *button = ui->keyboardWidget->findChild<QPushButton *>(QString(character) + "KeyButton", Qt::FindDirectChildrenOnly);
         if (wordOfTheDay.contains(character)) {
             if (currentWord.at(i) == wordOfTheDay.at(i)) {
-                qDebug() << "Correct character at position " << i << "!";
                 indexMapper->value(startofIndex)->setStyleSheet("background: rgb(83, 141, 78);");
+                indexMapper->value(startofIndex)->setProperty("green", true);
                 button->setStyleSheet("background: rgb(83, 141, 78);");
+                button->setProperty("green", true);
                 correctCount++;
             } else if (!notifiedCharacters.contains(character)) {
-                qDebug() << "Correct character, but at a different position!";
                 indexMapper->value(startofIndex)->setStyleSheet("background: rgb(181, 159, 59);");
+                indexMapper->value(startofIndex)->setProperty("yellow", true);
                 button->setStyleSheet("background: rgb(181, 159, 59);");
+                button->setProperty("yellow", true);
                 notifiedCharacters.insert(character);
             }
         } else {
-            qDebug() << "Incorrect character!";
             indexMapper->value(startofIndex)->setStyleSheet("background: rgb(120, 124, 126);");
             button->setStyleSheet("background: rgb(120, 124, 126);");
         }
@@ -151,12 +148,10 @@ void MainWindow::handleEnteredWord() {
         startofIndex++;
     }
 
-    qDebug() << "Number of correct characters in the right position: " << correctCount;
     if (correctCount == 5) {
         emit showResultsDialogSignal();
         this->resultsDialog->setText("Congratulations ! \nYour answer was correct.");
     }
-    qDebug() << currentIndex;
     if (currentIndex > 30) {
         emit showResultsDialogSignal();
         this->resultsDialog->setText("You couldn't find the right answer. \nPlease try again.");
@@ -190,10 +185,11 @@ void MainWindow::connectSignalsSlots() {
     connect(this, SIGNAL(showResultsDialogSignal()), this, SLOT(showResultsDialog()));
     connect(resultsDialog, SIGNAL(tryButtonClickedSignal()), this, SLOT(clearGame()));
     connect(this->ui->exitButton, SIGNAL(released()), this, SLOT(close()));
-    connect(this->ui->mainExitButton, SIGNAL(released()), this, SLOT(close()));
     connect(keyboardMapper, SIGNAL(mapped(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
     connect(this, SIGNAL(keyPressEventSignal(QString)), this, SLOT(handleKeyboardButtonClick(QString)));
-    connect(this->settings, SIGNAL(darkThemeSignal()), this, SLOT(toggleDarkMode()));
+    connect(this->settings, SIGNAL(darkThemeSignal(bool)), this, SLOT(toggleDarkMode(bool)));
+    connect(this->settings, SIGNAL(highContrastModeSignal(bool)), this, SLOT(toggleHighContrastMode(bool)));
+    connect(this->settings, SIGNAL(keyboardOnlySignal(bool)), this, SLOT(toggleKeyboardOnlyMode(bool)));
 }
 
 void MainWindow::mapKeyboard() {
@@ -209,7 +205,6 @@ void MainWindow::mapKeyboard() {
 void MainWindow::mapIndexes() {
     QGridLayout *gridLayout = qobject_cast<QGridLayout*>(this->ui->wordsWidget->layout());
     if(!gridLayout) {
-        qDebug() << "Layout is not QGridLayout!";
         return;
     }
 
@@ -219,7 +214,6 @@ void MainWindow::mapIndexes() {
             QString labelName = wordBox->objectName();  // Assuming labels have names like "index1", "index2", etc.
             int index = labelName.mid(5).toInt();  // Extract numerical part and convert to int
             indexMapper->insert(index, wordBox);  // Use insert to add the pair to the QMap
-            qDebug() << "Index of QLabel" << wordBox << "is : " << index;
         }
     }
 }
@@ -238,15 +232,11 @@ void MainWindow::getWordFromNetwork() {
             if (!jsonArray.isEmpty() && jsonArray.at(0).isString()) {
                 QString word = jsonArray.at(0).toString();
                 wordOfTheDay = word.toUpper();
-                qDebug() << "Word: " << word;
-            } else {
-                qDebug() << "Invalid JSON array or no string element found.";
             }
         } else {
             qDebug() << "Error: " << reply->errorString();
         }
 
-        reply->deleteLater();
         networkAccessManager->deleteLater();
     });
 }
@@ -256,7 +246,6 @@ void MainWindow::shakeWidget(QWidget *widget) {
     animation->setDuration(100);  // Adjust the duration as needed
     animation->setLoopCount(2);    // Number of times to repeat the animation
 
-    // Shake effect - adjust the delta values based on how much you want the widget to shake
     animation->setKeyValueAt(0, widget->pos());
     animation->setKeyValueAt(0.1, widget->pos() + QPoint(5, 0));
     animation->setKeyValueAt(0.2, widget->pos() - QPoint(5, 0));
@@ -272,47 +261,47 @@ void MainWindow::shakeWidget(QWidget *widget) {
     animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
-// TODO: To be implemented in future release
-void MainWindow::darkModeColors(QWidget *widget) {
-    for (QObject *child : widget->children()) {
-        if (QWidget *childWidget = qobject_cast<QWidget *>(child)) {
-            //childWidget->setStyleSheet("background-color: #000; color: #fff");
-            // Recursively apply dark mode to child widgets
-            darkModeColors(childWidget);
+void MainWindow::toggleHardMode(const bool isHardMode) {
+    return;
+}
+
+void MainWindow::toggleDarkMode(const bool isDark) {
+    ui->centralWidget->setProperty("darkMode", isDark);
+    settings->toggleDarkMode(isDark);
+    howToPlay->toggleDarkMode(isDark);
+    resultsDialog->toggleDarkMode(isDark);
+    foreach (auto widget, findChildren<QWidget *>()) {
+        widget->style()->unpolish(widget);
+        widget->style()->polish(widget);
+    }
+}
+
+
+void MainWindow::toggleHighContrastMode(const bool isHighContrast) {
+    ui->wordsWidget->setProperty("highContrastMode", isHighContrast);
+    foreach (auto widget, ui->centralWidget->findChildren<QWidget *>()) {
+        if (isHighContrast) {
+            if (widget->property("green") == true) {
+                widget->setStyleSheet("background-color: rgb(245, 121, 58)");
+            }
+            else if (widget->property("yellow") == true) {
+                widget->setStyleSheet("background-color: rgb(133, 192, 249)");
+            }
         }
-    }
-}
-
-// TODO: To be implemented in future release
-void MainWindow::resetColors(QWidget *widget) {
-    for (QObject *child : widget->children()) {
-        if (QWidget *childWidget = qobject_cast<QWidget *>(child)) {
-
-            // Apply the modified palette to the widget
-            childWidget->setStyleSheet("");
-
-            // Recursively apply dark mode to child widgets
-            resetColors(childWidget);
+        else {
+            if (widget->property("green") == true) {
+                widget->setStyleSheet("background: rgb(83, 141, 78);");
+            }
+            else if (widget->property("yellow") == true) {
+                widget->setStyleSheet("background: rgb(181, 159, 59);");
+            }
         }
+        widget->style()->unpolish(widget);
+        widget->style()->polish(widget);
     }
 }
 
-void MainWindow::toggleDarkMode() {
-    if (!darkModeEnabled) {
-        // Apply dark mode colors
-        darkModeColors(this);
-    } else {
-        // Reset to default colors
-        resetColors(this);
-    }
-}
-
-// TODO: To be implemented in future release
-void MainWindow::toggleHighContrastMode() {
-    if (!highContrastEnabled) {
-        // TODO : to be implemented
-        // Set to high contrast mode
-    } else {
-        // Reset high contrast mode
-    }
+void MainWindow::toggleKeyboardOnlyMode(const bool isKeyboardOnly) {
+    isKeyboardOnly ? disconnect(this, SIGNAL(keyPressEventSignal(QString)), this, SLOT(handleKeyboardButtonClick(QString))) :
+                     connect(this, SIGNAL(keyPressEventSignal(QString)), this, SLOT(handleKeyboardButtonClick(QString)));                     ;
 }
