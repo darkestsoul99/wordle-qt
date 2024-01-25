@@ -139,8 +139,13 @@ void MainWindow::handleEnteredWord() {
                 button->setStyleSheet("background: rgb(181, 159, 59);");
                 button->setProperty("yellow", true);
                 notifiedCharacters.insert(character);
+            } else if (notifiedCharacters.contains(character)) {
+                qDebug() << "here grey else if";
+                indexMapper->value(startofIndex)->setStyleSheet("background: rgb(120, 124, 126);");
+                button->setStyleSheet("background: rgb(120, 124, 126);");
             }
         } else {
+            qDebug() << "here grey";
             indexMapper->value(startofIndex)->setStyleSheet("background: rgb(120, 124, 126);");
             button->setStyleSheet("background: rgb(120, 124, 126);");
         }

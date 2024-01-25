@@ -501,6 +501,7 @@ font: 75 24pt &quot;NYTKarnak&quot;;
 left: 0;
 right: 0;
 position: relative;
+margin-left: 100px;
 }
 
 #wordleBarLogo[darkMode=true] {
@@ -509,6 +510,7 @@ left: 0;
 right: 0;
 position: relative;
 color: #fff;
+margin-left: 100px;
 } </string>
              </property>
              <property name="text">
