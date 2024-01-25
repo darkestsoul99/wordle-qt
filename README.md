@@ -51,5 +51,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or feedback, feel free to reach out at your-email@example.com.
+For any questions or feedback, feel free to reach out at berkekocadere@gmail.com.
 
